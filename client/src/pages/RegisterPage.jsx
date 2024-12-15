@@ -1,4 +1,10 @@
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+
 const RegisterPage = () => {
+  const inputClass =
+    "border text-gray-600 w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600 rounded-md";
+  const { registerInfo, setRegisterInfo } = useContext(AuthContext);
   return (
     <>
       <div className="flex h-[calc(100vh-6vh)] justify-center items-center bg-gray-900 text-white">
@@ -8,25 +14,31 @@ const RegisterPage = () => {
           </h1>
           <hr className="opacity-80" />
           <div className="mt-4">
-            <label htmlFor="username" className="block text-base mb-2">
+            <label htmlFor="name" className="block text-base mb-2">
               Name
             </label>
             <input
               type="text"
-              id="username"
-              className="border text-gray-600 w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600 rounded-md"
+              id="name"
+              className={inputClass}
               placeholder="Enter Name..."
+              onChange={(e) => {
+                setRegisterInfo({ ...registerInfo, name: e.target.value });
+              }}
             />
           </div>
           <div className="mt-4">
-            <label htmlFor="username" className="block text-base mb-2">
+            <label htmlFor="email" className="block text-base mb-2">
               Email
             </label>
             <input
               type="email"
-              id="username"
-              className="border text-gray-600 w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600 rounded-md"
+              id="email"
+              className={inputClass}
               placeholder="Enter Email..."
+              onChange={(e) => {
+                setRegisterInfo({ ...registerInfo, email: e.target.value });
+              }}
             />
           </div>
           <div className="mt-3">
@@ -36,8 +48,11 @@ const RegisterPage = () => {
             <input
               type="password"
               id="password"
-              className="border text-gray-600 w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600 rounded-md"
+              className={inputClass}
               placeholder="Enter Password..."
+              onChange={(e) => {
+                setRegisterInfo({ ...registerInfo, password: e.target.value });
+              }}
             />
           </div>
           <button className="mt-6 border-2 border-blue-600 bg-blue-600 text-white py-1 w-full hover:bg-blue-900 hover:border-blue-900 rounded-md">
